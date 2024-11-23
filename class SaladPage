@@ -1,0 +1,135 @@
+class SaladPage
+
+package Menu;
+
+import java.awt.*;
+import java.util.*;
+import java.awt.event.*;
+
+public class SaladPage implements WindowListener,ActionListener {
+
+Order order = new Order();
+
+Frame saladpage;
+Label l,l1;
+    Label d1,d2,d3,d4,d5;
+    Checkbox c1,c2,c3,c4,c5;
+    Panel panel;
+    Button b1;
+   
+
+    int p1 = 30, p2 = 35, p3 = 40, p4 = 40, p5 = 35;
+    final String s1 = " Nicoise", s2 = "Thai House", s3 = "Greek", s4 = "Mediterranean", s5 = "Tivoli";
+    SaladPage()
+{
+    saladpage = new Frame("Menu");
+   
+    l=new Label(" à LA CARTE ");
+    l.setBounds(160,37,80,35);
+    saladpage.add(l);
+    l.setBackground(Color.RED);
+       
+    l1 = new Label("SALAD");
+    l1.setBounds(122,80,43,25);
+    saladpage.add(l1);
+   
+   
+   
+    c1 = new Checkbox(s1);
+    c1.setBounds(30,110,95,40);
+   
+    c2 = new Checkbox(s2);
+    c2.setBounds(30,140,95,50);
+   
+    c3 = new Checkbox(s3);
+    c3.setBounds(30,170,95,50);
+   
+    c4 = new Checkbox(s4);
+    c4.setBounds(30,200,95,50);
+   
+    c5 = new Checkbox(s5);
+    c5.setBounds(30,230,95,50);
+   
+   
+    saladpage.add(c1);
+    saladpage.add(c2);
+    saladpage.add(c3);
+    saladpage.add(c4);
+    saladpage.add(c5);
+   
+    d1 = new Label("$" + p1);
+    d1.setBounds(160,110,50,50);
+   
+    d2 = new Label("$" + p2);
+    d2.setBounds(160,140,50,50);
+   
+    d3 = new Label("$" + p3);
+    d3.setBounds(160,170,50,50);
+   
+    d4 = new Label("$" + p4);
+    d4.setBounds(160,200,50,50);
+   
+    d5 = new Label("$" + p5);
+    d5.setBounds(160,230,50,50);
+   
+    saladpage.add(d1);
+    saladpage.add(d2);
+    saladpage.add(d3);
+    saladpage.add(d4);
+    saladpage.add(d5);
+   
+    b1 = new Button("Order");
+    b1.setBounds(170,300,50,50);
+    saladpage.add(b1);
+    b1.setBackground(Color.PINK);
+    saladpage.add(b1);
+    b1.addActionListener(this);
+   
+    panel=new Panel();  
+    panel.setBounds(15,25,500,500);    
+    panel.setBackground(Color.DARK_GRAY);
+    saladpage.add(panel);  
+   
+    saladpage.setSize(500,500);  
+    saladpage.setLayout(null);  
+    saladpage.setVisible(true);
+    saladpage.addWindowListener(this);
+}
+
+public void actionPerformed(ActionEvent e)
+{
+if(c1.getState()==true)
+(order).addSalad(s1,p1);
+if(c2.getState()==true)
+order.addSalad(s2,p2);
+if(c3.getState()==true)
+order.addSalad(s3,p3);
+if(c4.getState()==true)
+order.addSalad(s4,p4);
+if(c5.getState()==true)
+order.addSalad(s5,p5);
+
+saladpage.dispose();
+new PastaPage(order);
+}
+
+public void windowClosing(WindowEvent we)
+    {
+        System.exit(0);
+    }
+
+@Override
+public void windowOpened(WindowEvent e) {}
+@Override
+public void windowClosed(WindowEvent e) {}
+@Override
+public void windowIconified(WindowEvent e) {}
+@Override
+public void windowDeiconified(WindowEvent e) {}
+@Override
+public void windowActivated(WindowEvent e) {}
+@Override
+public void windowDeactivated(WindowEvent e) {}
+
+}
+
