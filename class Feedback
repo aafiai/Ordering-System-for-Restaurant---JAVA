@@ -1,0 +1,383 @@
+class Feedback
+package Menu;
+
+import java.sql.Connection ;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
+
+import java.sql.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Feedback implements WindowListener
+{
+
+public Feedback()
+{
+       initComponents();
+}
+
+private CheckboxGroup A;
+    private Checkbox A1;
+    private Checkbox A2;
+    private Checkbox A3;
+   
+    private CheckboxGroup F;
+    private Checkbox F1;
+    private Checkbox F2;
+    private Checkbox F3;
+   
+    private CheckboxGroup S;
+    private Checkbox S1;
+    private Checkbox S2;
+    private Checkbox S3;
+   
+    private CheckboxGroup O;
+    private Checkbox O1;
+    private Checkbox O2;
+    private Checkbox O3;
+   
+    private CheckboxGroup Q;
+    private Checkbox Q1;
+    private Checkbox Q2;
+    private Checkbox Q3;
+   
+    private CheckboxGroup V;
+    private Checkbox V1;
+    private Checkbox V2;
+    private Checkbox V3;
+   
+    private TextField NameT;
+    private Button jButton1;
+    private Frame menu;
+    private Label head, f, a, s, o, q, v;
+
+                       
+private void initComponents()
+{
+
+menu = new Frame("Feedback");
+        menu.addWindowListener(this);
+       
+        head = new Label("Name: ");
+        head.setBounds(50 ,30, 70,30);;
+        f = new Label("Food");
+       
+        f.setBounds(40, 220 ,60,30);
+        a = new Label("Ambience");
+        a.setBounds(40,60,60,30);
+        s = new Label("Service");
+        s.setBounds(40, 380,60,30);
+       
+        o = new Label("Money");
+        o.setBounds(160,60,60,30);
+        q = new Label("Quantity");
+        q.setBounds(160,220,60,30);
+       
+        v = new Label("Overall");
+        v.setBounds(160,380,60,30);
+        menu.add(f);
+        menu.add(a);
+        menu.add(s);
+        menu.add(o);
+        menu.add(q);
+        menu.add(v);
+        menu.add(head);
+       
+        menu.setSize(260, 600);
+        menu.setLayout(null);
+        menu.setVisible(true);
+       
+       jButton1 = new Button("Submit");
+       jButton1.setBounds(100,560,60,30);
+       menu.add(jButton1);
+       
+       NameT = new TextField();
+       NameT.setBounds(130, 30, 60, 30);
+       menu.add(NameT);
+       A = new CheckboxGroup();
+       A1 = new Checkbox("1",A,false);
+       A2 = new Checkbox("2",A,false);
+       A3 = new Checkbox("3",A,true);
+       menu.add(A1);menu.add(A2);menu.add(A3);
+       A1.setBounds(40,100,40,30);
+       A2.setBounds(40,140,40,30);
+       A3.setBounds(40, 180,40,30);
+       
+       
+       F = new CheckboxGroup();
+       F1 = new Checkbox("1",F,false);
+       F2 = new Checkbox("2",F,false);
+       F3 = new Checkbox("3",F,true);
+       menu.add(F1);menu.add(F2);menu.add(F3);
+       F1.setBounds(40,260,40,30);
+       F2.setBounds(40,300,40,30);
+       F3.setBounds(40, 340,40,30);
+       
+       S = new CheckboxGroup();
+       S1 = new Checkbox("1",S,false);
+       S2 = new Checkbox("2",S,false);
+       S3 = new Checkbox("3",S,true);
+       menu.add(S1);menu.add(S2);menu.add(S3);
+       S1.setBounds(40,420,40,30);
+       S2.setBounds(40,460,40,30);
+       S3.setBounds(40,500,40,30);
+       
+       O = new CheckboxGroup();
+       O1 = new Checkbox("1",O,false);
+       O2 = new Checkbox("2",O,false);
+       O3 = new Checkbox("3",O,true);
+       menu.add(O1);menu.add(O2);menu.add(O3);
+       O1.setBounds(160,100,40,30);
+       O2.setBounds(160,140,40,30);
+       O3.setBounds(160,180,40,30);
+       
+       Q = new CheckboxGroup();
+       Q1 = new Checkbox("1",Q,false);
+       Q2 = new Checkbox("2",Q,false);
+       Q3 = new Checkbox("3",Q,true);
+       menu.add(Q1);menu.add(Q2);menu.add(Q3);
+       Q1.setBounds(160,260,40,30);
+       Q2.setBounds(160,300,40,30);
+       Q3.setBounds(160,340,40,30);
+       
+       V = new CheckboxGroup();
+       V1 = new Checkbox("1",V,false);
+       V2 = new Checkbox("2",V,false);
+       V3 = new Checkbox("3",V,true);
+       menu.add(V1);menu.add(V2);menu.add(V3);
+       V1.setBounds(160,420,40,30);
+       V2.setBounds(160,460,40,30);
+       V3.setBounds(160,500,40,30);
+
+       jButton1.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt) {
+               jButton1ActionPerformed(evt);
+           }
+       });
+
+       
+       
+   }                        
+
+
+        public void windowClosing(WindowEvent we)
+        {
+            System.exit(0);
+        }
+
+@Override
+public void windowOpened(WindowEvent e) {}
+@Override
+public void windowClosed(WindowEvent e) {}
+@Override
+public void windowIconified(WindowEvent e) {}
+@Override
+public void windowDeiconified(WindowEvent e) {}
+@Override
+public void windowActivated(WindowEvent e) {}
+@Override
+public void windowDeactivated(WindowEvent e) {}
+   
+String foodrate,ambrate,qntyrate,servicerate,moneyrate,overallrate;
+
+   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)                                
+   {
+     
+     
+      F1.addItemListener(new ItemListener()
+      {
+      public void itemStateChanged(ItemEvent e)
+      {            
+      foodrate="1";
+      }
+      }
+      );
+     
+      F2.addItemListener(new ItemListener()
+      {
+      public void itemStateChanged(ItemEvent e)
+      {            
+      foodrate="2";
+      }
+      }
+      );
+     
+      F3.addItemListener(new ItemListener()
+      {
+      public void itemStateChanged(ItemEvent e)
+      {            
+      foodrate="3";
+      }
+      }
+      );
+
+           
+     
+     
+       A1.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        ambrate="1";
+        }
+        }
+        );
+       A2.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        ambrate="2";
+        }
+        }
+        );
+       A3.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        ambrate="3";
+        }
+        }
+        );
+     
+     
+       Q1.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        qntyrate="1";
+        }
+        }
+        );
+       Q2.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        qntyrate="2";
+        }
+        }
+        );
+       Q3.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        qntyrate="3";
+        }
+        }
+        );
+       
+     
+       S1.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        servicerate="1";
+        }
+        }
+        );
+       S2.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        servicerate="2";
+        }
+        }
+        );
+       S3.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        servicerate="3";
+        }
+        }
+        );    
+       
+     
+       O1.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        moneyrate="1";
+        }
+        }
+        );
+       O2.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        moneyrate="2";
+        }
+        }
+        );
+       O3.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        moneyrate="3";
+        }
+        }
+        );        
+       
+     
+       
+       V1.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        overallrate="1";
+        }
+        }
+        );
+       V2.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        overallrate="2";
+        }
+        }
+        );
+       V3.addItemListener(new ItemListener()
+        {
+        public void itemStateChanged(ItemEvent e)
+        {            
+        overallrate="3";
+        }
+        }
+        );
+         
+     
+     
+   try
+   {
+       Class.forName("com.mysql.cj.jdbc.Driver");
+       String query =  "Insert into Feedback (Name,foodrating,ambiencerating,quantityrating, servicerating,moneyrating,overallrating) values(?,?,?,?,?,?,?);";
+       Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/oops","root","123456789");
+       Statement stmt = con.createStatement();
+       PreparedStatement ps = con.prepareStatement(query);
+       ps.setString(1,NameT.getText());
+       ps.setString(2,foodrate);
+       ps.setString(3,ambrate);
+       ps.setString(4,qntyrate);
+       ps.setString(5,servicerate);
+       ps.setString(6,moneyrate);
+       ps.setString(7,overallrate);
+       int i=ps.executeUpdate();
+//       stmt.executeUpdate(query);
+     
+       JOptionPane.showMessageDialog(null, "FEEDBACK SUCCESSFULLY SUBMITTED"+i);
+   }  
+     
+     
+     
+     
+     
+   catch (Exception e)
+   {
+           JOptionPane.showMessageDialog(null, e.getMessage());
+     
+   }              
+   }      
+                 
+}
+
