@@ -1,1 +1,2 @@
 # Ordering-System-for-Restaurant---JAVA
+Developed a Java-based ordering system using Eclipse IDE with a graphical user interface (GUI) for seamless customer interaction. Integrated MySQL for database storage to manage orders and customer information. Established a direct connection between customers and the kitchen, and implemented a billing system to automatically generate final invoices, enhancing the efficiency and convenience of the food ordering process.
