@@ -1,0 +1,64 @@
+class MenuMenu
+package Menu;
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class MainMenu implements WindowListener{
+
+Frame welcome;
+Button order;
+Label start;
+
+MainMenu()
+{
+welcome = new Frame("Welcome");
+welcome.setSize(300,300);
+welcome.setLayout(null);
+welcome.setVisible(true);
+welcome.addWindowListener(this);
+
+start = new Label("Welcome to our Restaurant!");
+welcome.add(start);
+start.setBounds(75, 120, 200, 30);
+
+order = new Button("Order");
+welcome.add(order);
+order.setBounds(125,150,50,30);
+
+order.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                new Feedback();
+                welcome.dispose();
+            }
+        });
+
+}
+
+public void windowClosing(WindowEvent we)
+    {
+        System.exit(0);
+    }
+
+@Override
+public void windowOpened(WindowEvent e) {}
+@Override
+public void windowClosed(WindowEvent e) {}
+@Override
+public void windowIconified(WindowEvent e) {}
+@Override
+public void windowDeiconified(WindowEvent e) {}
+@Override
+public void windowActivated(WindowEvent e) {}
+@Override
+public void windowDeactivated(WindowEvent e) {}
+
+
+public static void main(String[] args) {
+
+new MainMenu();
+
+}
+
+}
+
