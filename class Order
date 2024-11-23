@@ -1,0 +1,54 @@
+class Order
+package Menu;
+
+import java.util.*;
+public class Order {
+
+private ArrayList <String> salads = new ArrayList<String>();
+private ArrayList <Integer> saladsPrice = new ArrayList<Integer>();
+private ArrayList <String> pastas = new ArrayList<String>();
+private ArrayList <Integer> pastasPrice = new ArrayList<Integer>();
+
+public void addPasta(String pasta, int pastaPrice)
+{
+pastas.add(pasta);
+pastasPrice.add(pastaPrice);
+}
+
+public void addSalad(String s1, int p1) {
+salads.add(s1);
+saladsPrice.add(p1);
+}
+//create getter functions for all
+public String getSalad(int i)
+{
+return salads.get(i);
+}
+
+public Integer getSaladPrice(int i)
+{
+return saladsPrice.get(i);
+}
+
+public String getPasta(int i)
+{
+return pastas.get(i);
+}
+
+public Integer getPastaPrice(int i)
+{
+return pastasPrice.get(i);
+}
+
+public int getSaladSize()
+{
+return salads.size();
+}
+
+public int getPastaSize()
+{
+return pastas.size();
+}
+
+
+}
